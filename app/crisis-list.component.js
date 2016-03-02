@@ -9,28 +9,26 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var HeroDetailComponent;
+    var CrisisListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            HeroDetailComponent = (function () {
-                function HeroDetailComponent() {
+            CrisisListComponent = (function () {
+                function CrisisListComponent() {
                 }
-                HeroDetailComponent = __decorate([
+                CrisisListComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-hero-detail',
-                        template: "\n    <div *ngIf=\"hero\">\n        <h2>{{hero.name}} details!</h2>\n        <div><label>id: </label>{{hero.id}}</div>\n        <div>\n            <label>name: </label>\n            <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n        </div>\n    </div>\n    ",
-                        inputs: ['hero']
+                        template: "\n    <h2>CRISIS CENTER</h2>\n    <p>Get your crisis here</p>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], HeroDetailComponent);
-                return HeroDetailComponent;
+                ], CrisisListComponent);
+                return CrisisListComponent;
             })();
-            exports_1("HeroDetailComponent", HeroDetailComponent);
+            exports_1("CrisisListComponent", CrisisListComponent);
         }
     }
 });
-//# sourceMappingURL=hero-detail.component.js.map
+//# sourceMappingURL=crisis-list.component.js.map

@@ -1,4 +1,4 @@
-System.register(['angular2/core', "./mock-heroes"], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,30 +8,29 @@ System.register(['angular2/core', "./mock-heroes"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_heroes_1;
-    var HeroService;
+    var core_1;
+    var Hero, HeroService, HEROES, heroesPromise;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (mock_heroes_1_1) {
-                mock_heroes_1 = mock_heroes_1_1;
             }],
         execute: function() {
+            Hero = (function () {
+                function Hero(id, name) {
+                    this.id = id;
+                    this.name = name;
+                }
+                return Hero;
+            })();
+            exports_1("Hero", Hero);
             HeroService = (function () {
                 function HeroService() {
                 }
-                HeroService.prototype.getHeroes = function () {
-                    return Promise.resolve(mock_heroes_1.HEROES);
-                };
-                // See the "Take it slow" appendix
-                HeroService.prototype.getHeroesSlowly = function () {
-                    return new Promise(function (resolve) {
-                        return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
-                    } // 2 seconds
-                     // 2 seconds
-                    );
+                HeroService.prototype.getHeroes = function () { return heroesPromise; };
+                HeroService.prototype.getHero = function (id) {
+                    return heroesPromise
+                        .then(function (heroes) { return heroes.filter(function (h) { return h.id === +id; })[0]; });
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 
@@ -40,6 +39,15 @@ System.register(['angular2/core', "./mock-heroes"], function(exports_1) {
                 return HeroService;
             })();
             exports_1("HeroService", HeroService);
+            HEROES = [
+                new Hero(11, 'Mr. Nice'),
+                new Hero(12, 'Narco'),
+                new Hero(13, 'Bombasto'),
+                new Hero(14, 'Celeritas'),
+                new Hero(15, 'Magneta'),
+                new Hero(16, 'RubberMan')
+            ];
+            heroesPromise = Promise.resolve(HEROES);
         }
     }
 });
