@@ -1,6 +1,4 @@
-System.register(['angular2/core', './crisis.service', 'angular2/router'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core', './crisis.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,10 +23,12 @@ System.register(['angular2/core', './crisis.service', 'angular2/router'], functi
             }],
         execute: function() {
             CrisisListComponent = (function () {
-                function CrisisListComponent(_service, _router) {
+                function CrisisListComponent(_service, _router, routeParams) {
                     this._service = _service;
                     this._router = _router;
+                    this._selectedId = +routeParams.get('id');
                 }
+                CrisisListComponent.prototype.isSelected = function (crisis) { return crisis.id === this._selectedId; };
                 CrisisListComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._service.getCrises().then(function (crises) { return _this.crises = crises; });
@@ -38,12 +38,12 @@ System.register(['angular2/core', './crisis.service', 'angular2/router'], functi
                 };
                 CrisisListComponent = __decorate([
                     core_1.Component({
-                        template: "\n    <ul class=\"items\">\n      <li *ngFor=\"#crisis of crises\"\n        (click)=\"onSelect(crisis)\">\n        <span class=\"badge\">{{crisis.id}}</span> {{crisis.name}}\n      </li>\n    </ul>\n  ",
+                        template: "\n    <ul class=\"items\">\n      <li *ngFor=\"#crisis of crises\"\n        [class.selected]=\"isSelected(crisis)\"\n        (click)=\"onSelect(crisis)\">\n        <span class=\"badge\">{{crisis.id}}</span> {{crisis.name}}\n      </li>\n    </ul>\n  ",
                     }), 
-                    __metadata('design:paramtypes', [crisis_service_1.CrisisService, router_1.Router])
+                    __metadata('design:paramtypes', [crisis_service_1.CrisisService, router_1.Router, router_1.RouteParams])
                 ], CrisisListComponent);
                 return CrisisListComponent;
-            }());
+            })();
             exports_1("CrisisListComponent", CrisisListComponent);
         }
     }
