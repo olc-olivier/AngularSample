@@ -6,3 +6,5 @@ typings/
 tmp
 .DS_Store
 .idea
+app/*.js
+app/*.js.map
