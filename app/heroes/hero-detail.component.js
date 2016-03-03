@@ -1,6 +1,4 @@
-System.register(['angular2/core', './hero.service', 'angular2/router'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core', './hero.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,16 +35,16 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
                 };
                 HeroDetailComponent.prototype.gotoHeroes = function () {
                     // Like <a [routerLink]="['Heroes']">Heroes</a>
-                    this._router.navigate(['Heroes']);
+                    this._router.navigate(['HeroList']);
                 };
                 HeroDetailComponent = __decorate([
                     core_1.Component({
-                        template: "\n  <h2>HEROES</h2>\n  <div *ngIf=\"hero\">\n    <h3>\"{{hero.name}}\"</h3>\n    <div>\n      <label>Id: </label>{{hero.id}}</div>\n    <div>\n      <label>Name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n    </div>\n    <p>\n      <button (click)=\"gotoHeroes()\">Back</button>\n    </p>\n  </div>\n  ",
+                        template: "\n  <div *ngIf=\"hero\">\n    <h3>\"{{hero.name}}\"</h3>\n    <div>\n      <label>Id: </label>{{hero.id}}</div>\n    <div>\n      <label>Name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n    </div>\n    <p>\n      <button (click)=\"gotoHeroes()\">Back</button>\n    </p>\n  </div>\n  ",
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, hero_service_1.HeroService])
                 ], HeroDetailComponent);
                 return HeroDetailComponent;
-            }());
+            })();
             exports_1("HeroDetailComponent", HeroDetailComponent);
         }
     }

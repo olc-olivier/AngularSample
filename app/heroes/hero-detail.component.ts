@@ -6,7 +6,6 @@ import {Hero, HeroService}   from './hero.service';
 import {RouteParams, Router} from 'angular2/router';
 @Component({
     template: `
-  <h2>HEROES</h2>
   <div *ngIf="hero">
     <h3>"{{hero.name}}"</h3>
     <div>
@@ -33,6 +32,6 @@ export class HeroDetailComponent implements OnInit  {
     }
     gotoHeroes() {
         // Like <a [routerLink]="['Heroes']">Heroes</a>
-        this._router.navigate(['Heroes']);
+        this._router.navigate(['HeroList']);
     }
 }

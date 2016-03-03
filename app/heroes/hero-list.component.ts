@@ -6,7 +6,6 @@ import {Hero, HeroService}   from './hero.service';
 import {Router}              from 'angular2/router';
 @Component({
     template: `
-    <h2>HEROES</h2>
     <ul class="items">
       <li *ngFor="#hero of heroes"
         (click)="onSelect(hero)">
